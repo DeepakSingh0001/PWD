@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Malicious URL Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Malicious URL Detector</h1>
+        <form method="POST">
+            <input type="text" name="url" placeholder="Enter URL here..." required>
+            <button type="submit">Check</button>
+        </form>
+        
+        {% if result %}
+        <div class="result">
+            <h2>🔍 Analysis for: <span>{{ result.url }}</span></h2>
+            <ul>
+                <li><strong>Logistic Regression:</strong> {{ result.log }}</li>
+                <li><strong>Fast Model:</strong> {{ result.fast }}</li>
+                <li><strong>CNN:</strong> {{ result.cnn }}</li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
